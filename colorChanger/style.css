@@ -59,6 +59,8 @@ button:hover {
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   transition: transform 0.2s ease, opacity 0.2s ease;
+   outline: none;
+   user-select: none;
 }
 
 .box:hover {
