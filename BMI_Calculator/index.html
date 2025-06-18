@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="bmi-container">
+      <h2>BMI Calculator</h2>
+
+      <form id="bmi-form">
+        <input type="number" id="weight" placeholder="Weight (kg)" required />
+        <input type="number" id="height" placeholder="Height (cm)" required />
+        <button type="submit">Calculate BMI</button>
+      </form>
+
+      <div id="result" class="result-box">
+        <p>Your BMI will appear here.</p>
+      </div>
+
+      <div class="bmi-guide">
+        <h3>BMI Guide</h3>
+        <ul>
+          <li><strong>Underweight:</strong> Less than 18.5</li>
+          <li><strong>Normal:</strong> 18.5 – 24.9</li>
+          <li><strong>Overweight:</strong> 25 – 29.9</li>
+          <li><strong>Obese:</strong> 30 and above</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const form = document.getElementById("bmi-form");
+    // const form = document.querySelector('form')
+    let result = document.getElementById("result");
+    // console.log(result);
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      // console.log(e);
+      // console.log(e.target);
+      // console.log(this);
+
+      let weight = document.getElementById("weight").value;
+      let height = document.getElementById("height").value;
+      const bmi = Number(calculateBMI(weight, height)).toFixed(2);
+      const bmiChecker = bmiDisplay(bmi);
+      console.log(typeof(bmi));
+      result.innerText = `Your BMI is : ${bmi}, Case : ${bmiChecker}`
+
+      document.getElementById("weight").value = ""
+      document.getElementById("height").value = ""
+      
+
+
+      // console.log(bmi);
+    });
+
+    const calculateBMI = (weight, height) => weight / (height / 100) ** 2;
+    const bmiDisplay = (bmi) => {
+      if (bmi < 18.5) return "Underweight";
+      else if (bmi >= 18.5 && bmi <= 24.9) return "Normal";
+      else if (bmi >= 25 && bmi <= 29.9) return "Overweight";
+      else return "Obese";
+
+      //  <li><strong>Underweight:</strong> Less than 18.5</li>
+      //     <li><strong>Normal:</strong> 18.5 – 24.9</li>
+      //     <li><strong>Overweight:</strong> 25 – 29.9</li>
+      //     <li><strong>Obese:</strong> 30 and above</li>
+    };
+  </script>
+</html>
