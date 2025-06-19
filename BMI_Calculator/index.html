@@ -46,16 +46,16 @@
 
       let weight = document.getElementById("weight").value;
       let height = document.getElementById("height").value;
-      const bmi = Number(calculateBMI(weight, height)).toFixed(2);
+
+      const bmi = Number(calculateBMI(weight, height).toFixed(2));
       const bmiChecker = bmiDisplay(bmi);
+
+
       console.log(typeof(bmi));
       result.innerText = `Your BMI is : ${bmi}, Case : ${bmiChecker}`
 
       document.getElementById("weight").value = ""
       document.getElementById("height").value = ""
-      
-
-
       // console.log(bmi);
     });
 
