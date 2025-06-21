@@ -1,9 +1,5 @@
-
-
-
 let clock = document.getElementById("clock");
 let displayDate = document.getElementById("date");
-
 
 // <---------------- runs after one second when page loads ---------------->
 
@@ -27,9 +23,6 @@ let displayDate = document.getElementById("date");
 //   hour12: true
 // });
 
-
-
-
 // //  ---------- clock.textContent = date.toLocaleTimeString();--------------------
 //   displayDate.textContent = date.toLocaleDateString("en-GB", {
 //     weekday: "short",
@@ -39,25 +32,25 @@ let displayDate = document.getElementById("date");
 //   });
 // }, 1000);
 
-// <------------- runs direct at page load ------------------> 
+// <------------- runs direct at page load ------------------>
 
-function updateClock (){
-    let date = new Date()
+function updateClock() {
+  let date = new Date();
 
-    clock.textContent = date.toLocaleTimeString("en-US", {
-  hour: '2-digit',
-  minute: '2-digit',
-  second: '2-digit',
-  hour12: true
-});
+  clock.textContent = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: true,
+  });
 
-    displayDate.textContent = date.toLocaleDateString("en-US", {
-        weekday : "short",
-        year: "numeric",
-        month: "short",
-        day: "2-digit"
-    })
-
+  displayDate.textContent = date.toLocaleDateString("en-US", {
+    weekday: "short",
+    year: "numeric",
+    month: "short",
+    day: "2-digit",
+  });
 }
-updateClock()
-setInterval(updateClock,1000)
+
+updateClock();
+setInterval(updateClock, 1000);

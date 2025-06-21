@@ -22,17 +22,31 @@
     //   document.body.style.backgroundColor = document.body.style.backgroundColor === "violet" ? "" : "violet";
     // });
 
-// <--- function ----> 
+// <--- function for each approach ----> 
 
-    const container = document.querySelectorAll(".box");
+    // const container = document.querySelectorAll(".box");
 
-      container.forEach(function(button){
-          button.addEventListener("click", function(){
-          console.log(this.id)
-          document.body.style.backgroundColor = document.body.style.backgroundColor === this.id ? "": this.id;
+    //   container.forEach(function(button){
+    //       button.addEventListener("click", function(){
+    //       console.log(this.id)
+    //       document.body.style.backgroundColor = document.body.style.backgroundColor === this.id ? "": this.id;
                                        
-          })
-      })
+    //       })
+    //   })
+
+
+    // <--- function without forEach approach ----> 
+
+    const container = document.querySelector(".container")
+    console.log(container);
+    
+
+    container.addEventListener("click", function(e){
+      console.log(e.target) // "e" targeting the event
+      console.log(this.id); // "this" targeting the container
+      document.body.style.backgroundColor = document.body.style.backgroundColor === e.target.id ? "": e.target.id;
+      
+    })
 
 
 
