@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub Profile Card</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="card">
+    <img id="avatar" src="https://avatars.githubusercontent.com/u/9919?v=4" alt="Profile Picture">
+    <h2 id="name">GitHub User</h2>
+    <p id="bio">This is a bio section from GitHub.</p>
+
+    <div class="stats">
+      <div>
+        <strong id="followers">1234</strong>
+        <span>Followers</span>
+      </div>
+      <div>
+        <strong id="following">567</strong>
+        <span>Following</span>
+      </div>
+    </div>
+
+    <p id="location">📍 Location</p>
+  </div>
+
+  <script>
+    let name = document.getElementById("name");
+    let avatar = document.getElementById("avatar");
+    let bio = document.getElementById("bio");
+    let followers = document.getElementById("followers");
+    let following = document.getElementById("following");
+    let place = document.getElementById("location");
+    
+    
+    
+
+    let url = 'https://api.github.com/users/torvalds'
+
+    const request = new XMLHttpRequest();
+    request.open("GET", url);
+    request.onreadystatechange = function(){
+        // console.log(request.readyState);
+        if(request.readyState == 4){
+            const resp = JSON.parse(this.responseText)
+            console.log(resp)
+            name.textContent = resp.name
+            avatar.setAttribute("src" , resp.avatar_url)
+            bio.textContent = resp.bio;
+            followers.textContent = resp.followers
+            following.textContent = resp.following
+            place.textContent = `📍 ${resp.location}`
+
+
+        }
+
+    }
+    
+    request.send();
+  </script>
+
+</body>
+</html>
